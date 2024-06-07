@@ -42,7 +42,7 @@ public class Date {
 	 *   - less or equal to 29 for February if year is leap
 	 *   - less or equal to 30 for February if year is non-leap
 	 */
-	private void setDay(int day) {
+	public void setDay(int day) {
 		if (day < 1) {
 			throw new IllegalArgumentException("day must greater or equal to 1.");
 		}
@@ -64,7 +64,7 @@ public class Date {
 	/**
 	 * Check validity of the month when creating a new Date. month must be between 1 and 12.
 	 */
-	private void setMonth(int month) {
+	public void setMonth(int month) {
 		if (month < 1 || month > 12) {
 			throw new IllegalArgumentException("month must be between 1 and 12.");
 		}
@@ -74,7 +74,7 @@ public class Date {
 	/**
 	 * Check validity of the year when creating a new Date. year must be greater than 0
 	 */
-	private void setYear(int year) {
+	public void setYear(int year) {
 		if (year < 0) {
 			throw new IllegalArgumentException("year must be greater or equal to 0.");
 		}
@@ -104,7 +104,7 @@ public class Date {
 	 *
 	 * Check if the date is a end of a month.
 	 */
-	private boolean isEndOfMonth() {
+	public boolean isEndOfMonth() {
 		boolean leap = isLeapYear();
 		if (day == 31 || (day == 30 && isThirtyDayMonth()) ||
 				(this.month == 2 && ((day == 29 && leap) || (day == 28 && !leap))))
@@ -115,7 +115,7 @@ public class Date {
 	/**
 	 * returns true if month has 30 days.
 	 */
-	private boolean isThirtyDayMonth() {
+	public boolean isThirtyDayMonth() {
 		if (this.month == 4 || this.month == 6 || this.month == 9 || this.month == 11)
 			return true;
 		else return false;
