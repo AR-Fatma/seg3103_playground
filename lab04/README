@@ -1,18 +1,18 @@
-package test;
+# FizzBuzz TDD Project
 
-import static org.junit.Assert.*;
-import org.junit.Test;
+## Summary
+This project demonstrates the use of Test-Driven Development (TDD) to implement the FizzBuzz game.
 
-import src.FizzBuzz;
+## Commit Groups
+1. **Failing Test**
+   - Commit: "Add failing test for FizzBuzz"
+   - Description: Added initial failing tests for FizzBuzz functionality.
 
-public class FizzBuzzTest {
-    @Test
-    public void testFizzBuzz() {
-        FizzBuzz fb = new FizzBuzz();
-        assertEquals("1", fb.getFizzBuzz(1));
-        assertEquals("2", fb.getFizzBuzz(2));
-        assertEquals("Fizz", fb.getFizzBuzz(3));
-        assertEquals("Buzz", fb.getFizzBuzz(5));
-        assertEquals("FizzBuzz", fb.getFizzBuzz(15));
-    }
-}
+2. **Passing Test**
+   - Commit: "Implement FizzBuzz to pass the test"
+   - Description: Implemented minimal code to pass the initial tests.
+
+3. **Refactored Code**
+   - Commit: "Refactor FizzBuzz code and update tests"
+   - Description: Refactored the code and updated tests to include "Buzz" and "FizzBuzz".
+   
