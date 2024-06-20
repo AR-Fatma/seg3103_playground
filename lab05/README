@@ -1,0 +1,19 @@
+# Lab 05 - Mocks and Stubs
+
+## Overview
+
+In this lab, we focused on implementing stubs and mocks to facilitate testing in the Grades and Twitter projects. The objectives were to create stubs for the Grades project to simulate the behavior of a yet-to-be-completed module and to implement mock tests for the Twitter project using EasyMock.
+
+## Commitments
+
+### 1. Create lab 05
+
+Initial setup of the lab environment. Created the `lab05` directory and extracted the contents of `grades.zip` and `twitter.zip` into this directory. Ensured that the projects could compile and run tests.
+
+
+### 2. Implemented mock tests for Twitter project
+
+In this step, we implemented mock tests for the `isMentionned` method in the `TwitterTest` class using the EasyMock framework. This allowed us to test the method without relying on the actual implementation of the `Twitter` class.
+
+3. Update grade
+In this step, we created stubs for the Grades.Calculator module to simulate its behavior. These stubs allowed us to continue development and testing of the Grades application while waiting for the actual implementation of the module.
