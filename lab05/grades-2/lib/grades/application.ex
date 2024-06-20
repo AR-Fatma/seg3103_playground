@@ -3,24 +3,21 @@ defmodule Grades.Application do
   # for more information on OTP Applications
   @moduledoc false
 
-  use Application
+  def main do
+    grades = %{
+      final: "",
+      homework: ["", "", "", ""],
+      labs: ["", "", "", "", "", ""],
+      midterm: ""
+    }
 
-  def start(_type, _args) do
-    children = [
-      # Start the Telemetry supervisor
-      GradesWeb.Telemetry,
-      # Start the PubSub system
-      {Phoenix.PubSub, name: Grades.PubSub},
-      # Start the Endpoint (http/https)
-      GradesWeb.Endpoint
-      # Start a worker by calling: Grades.Worker.start_link(arg)
-      # {Grades.Worker, arg}
-    ]
+    percentage = GradesCalculatorStub.percentage_grade(grades)
+    letter = GradesCalculatorStub.letter_grade(grades)
+    numeric = GradesCalculatorStub.numeric_grade(grades)
 
-    # See https://hexdocs.pm/elixir/Supervisor.html
-    # for other strategies and supported options
-    opts = [strategy: :one_for_one, name: Grades.Supervisor]
-    Supervisor.start_link(children, opts)
+    IO.puts("Percentage: #{percentage}")
+    IO.puts("Letter Grade: #{letter}")
+    IO.puts("Numeric Grade: #{numeric}")
   end
 
   # Tell Phoenix to update the endpoint configuration
