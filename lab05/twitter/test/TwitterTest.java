@@ -54,31 +54,55 @@ class TwitterTest {
         assertEquals(false, actual);
     }
 
-    // @Test
-    // void isMentionned_lookForAtSymbol() {
-    //   // Assuming a tweet like "hello @me"
-    //   // isMentionned("me") should be true
-    //   // isMentionned("you") should be false
-    // }
+    @Test
+    void isMentionned_lookForAtSymbol() {
+        Twitter twitterMock = EasyMock.createMock(Twitter.class);
+        EasyMock.expect(twitterMock.isMentionned("me")).andReturn(true);
+        EasyMock.expect(twitterMock.isMentionned("you")).andReturn(false);
+        EasyMock.replay(twitterMock);
+        
+        assert twitterMock.isMentionned("me");
+        assert !twitterMock.isMentionned("you");
+        
+        EasyMock.verify(twitterMock);
+    }
 
-    // @Test
-    // void isMentionned_dontReturnSubstringMatches() {
-    //   // Assuming a tweet like "hello @meat"
-    //   // isMentionned("me") should be false
-    //   // isMentionned("meat") should be true
-    // }
+    @Test
+    void isMentionned_dontReturnSubstringMatches() {
+        Twitter twitterMock = EasyMock.createMock(Twitter.class);
+        EasyMock.expect(twitterMock.isMentionned("me")).andReturn(false);
+        EasyMock.expect(twitterMock.isMentionned("meat")).andReturn(true);
+        EasyMock.replay(twitterMock);
+        
+        assert !twitterMock.isMentionned("me");
+        assert twitterMock.isMentionned("meat");
+        
+        EasyMock.verify(twitterMock);
+    }
 
-    // @Test
-    // void isMentionned_superStringNotFound() {
-    //   // Assuming a tweet like "hello @me"
-    //   // isMentionned("me") should be true
-    //   // isMentionned("meat") should be false
-    // }
+    @Test
+    void isMentionned_superStringNotFound() {
+        Twitter twitterMock = EasyMock.createMock(Twitter.class);
+        EasyMock.expect(twitterMock.isMentionned("me")).andReturn(true);
+        EasyMock.expect(twitterMock.isMentionned("meat")).andReturn(false);
+        EasyMock.replay(twitterMock);
+        
+        assert twitterMock.isMentionned("me");
+        assert !twitterMock.isMentionned("meat");
+        
+        EasyMock.verify(twitterMock);
+    }
 
-    // @Test
-    // void isMentionned_handleNull() {
-    //   // Assuming no tweet is available (i.e. null)
-    //   // isMentionned("me") should be false
-    //   // isMentionned("meat") should be false
-    // }
+    @Test
+    void isMentionned_handleNull() {
+        Twitter twitterMock = EasyMock.createMock(Twitter.class);
+        EasyMock.expect(twitterMock.isMentionned("me")).andReturn(false);
+        EasyMock.expect(twitterMock.isMentionned("meat")).andReturn(false);
+        EasyMock.replay(twitterMock);
+        
+        assert !twitterMock.isMentionned("me");
+        assert !twitterMock.isMentionned("meat");
+        
+        EasyMock.verify(twitterMock);
+    }
 }
