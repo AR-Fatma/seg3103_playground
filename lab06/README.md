@@ -14,4 +14,5 @@ The objective of this lab is to automate user acceptance testing for a bookstore
 - WebDriver for the desired browser (ChromeDriver in this example)
 - Selenium WebDriver and JUnit dependencies (included in `pom.xml`)
 
-![Application running.png](lab06/Screenshots/Application running.png)
+![Application_running.png](lab06/Screenshots/Application_running.png)
+![test.png](lab06/Screenshots/test.png)
