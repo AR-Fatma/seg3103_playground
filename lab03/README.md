@@ -11,6 +11,10 @@ java -javaagent:lib/jacocoagent.jar -jar lib/junit-platform-console-standalone-1
 # Step 3: Generate the JaCoCo Coverage Report
 java -jar lib/jacococli.jar report jacoco.exec --classfiles bin --sourcefiles src --html report
 
+<<<<<<< HEAD
 ![Coverage Screenshot]()
 
+=======
+![Coverage Screenshot](lab03/Screenshots/Coverage%20Screenshot.png)
+>>>>>>> 6f978f7f5fd693a63b409f06da66c98ae66dace4
 
