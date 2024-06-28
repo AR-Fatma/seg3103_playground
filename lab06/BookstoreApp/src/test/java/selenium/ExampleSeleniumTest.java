@@ -74,6 +74,16 @@ class ExampleSeleniumTest {
     actual = welcome.getText();
     assertEquals(expected, getWords(actual)[0]);
   }
+  public void testAdminLogin() {
+    driver.get("http://localhost:8080/admin");
+    driver.findElement(By.name("username")).sendKeys("admin");
+    driver.findElement(By.name("password")).sendKeys("password");
+    driver.findElement(By.name("submit")).click();
+    
+    // Add assertions to verify the login was successful
+    WebElement logoutButton = driver.findElement(By.id("logout"));
+    assertTrue(logoutButton.isDisplayed());
+  }
 
   private String[] getWords(String s) {
     return s.split("\\s+");
