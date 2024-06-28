@@ -1,21 +1,19 @@
 package selenium;
 
 import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.*;
-
-
-import java.util.concurrent.TimeUnit;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import java.time.Duration;
-
+import java.util.concurrent.TimeUnit;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import io.github.bonigarcia.wdm.WebDriverManager;
+
+
+
 
 class ExampleSeleniumTest {
 
@@ -30,31 +28,31 @@ class ExampleSeleniumTest {
 
   @BeforeEach
   void setUp() {
-    // Pick your browser
-    // driver = new FirefoxDriver();
-    // driver = new SafariDriver();
     WebDriverManager.chromedriver().setup();
     driver = new ChromeDriver();
-
     driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     driver.get("http://localhost:8080/");
-    // wait to make sure Selenium is done loading the page
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
     wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("title")));
+
   }
 
   @AfterEach
   public void tearDown() {
-    driver.close();
+    if (driver != null){
+      driver.quit();
+    }
   }
 
   @AfterAll
   public static void tearDownAfterClass() throws Exception {
-    server.destroy();
+    if (server != null) {
+      server.destroy();
+    }
   }
 
   @Test
-  void test1() {
+  void testHomePageTitle() {
     WebElement element = driver.findElement(By.id("title"));
     String expected = "YAMAZONE BookStore";
     String actual = element.getText();
@@ -62,7 +60,7 @@ class ExampleSeleniumTest {
   }
 
   @Test
-  public void test2() {
+  public void testLanguageChange() {
     WebElement welcome = driver.findElement(By.cssSelector("p"));
     String expected = "Welcome";
     String actual = welcome.getText();
