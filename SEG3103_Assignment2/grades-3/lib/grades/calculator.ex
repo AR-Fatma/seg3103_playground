@@ -1,6 +1,6 @@
 defmodule Grades.Calculator do
 
-  def calculate_average_mark(a) do
+  def avg(a) do
     if Enum.count(a) == 0 do
       0
     else
@@ -8,17 +8,20 @@ defmodule Grades.Calculator do
     end
   end
 
+  def calculate_grade(avg_labs, avg_homework, midterm, final) do
+    0.2 * avg_labs + 0.3 * avg_homework + 0.2 * midterm + 0.3 * final
+  end
+
   def percentage_grade(%{homework: homework, labs: labs, midterm: midterm, final: final}) do
-    avg_homework = calculate_average_mark(homework)
-    avg_labs = calculate_average_mark(labs)
-    mark = 0.2 * avg_labs + 0.3 * avg_homework + 0.2 * midterm + 0.3 * final
+    avg_homework = avg(homework)
+    avg_labs = avg(labs)
+    mark = calculate_grade(avg_labs, avg_homework, midterm, final)
     round(mark * 100)
   end
 
   def letter_grade(%{homework: homework, labs: labs, midterm: midterm, final: final}) do
-    avg_homework = calculate_average_mark(homework)
-
-    avg_labs = calculate_average_mark(labs)
+    avg_homework = avg(homework)
+    avg_labs = avg(labs)
 
     avg_exams = (midterm + final) / 2
 
@@ -30,7 +33,7 @@ defmodule Grades.Calculator do
     if avg_homework < 0.4 || avg_exams < 0.4 || num_labs < 3 do
       "EIN"
     else
-      mark = 0.2 * avg_labs + 0.3 * avg_homework + 0.2 * midterm + 0.3 * final
+     mark = calculate_grade(avg_labs, avg_homework, midterm, final)
 
       cond do
         mark > 0.895 -> "A+"
@@ -49,9 +52,8 @@ defmodule Grades.Calculator do
   end
 
   def numeric_grade(%{homework: homework, labs: labs, midterm: midterm, final: final}) do
-    avg_homework = calculate_average_mark(homework)
-
-    avg_labs = calculate_average_mark(labs)
+    avg_homework = avg(homework)
+    avg_labs = avg(labs)
 
     avg_exams = (midterm + final) / 2
 
@@ -63,8 +65,7 @@ defmodule Grades.Calculator do
     if avg_homework < 0.4 || avg_exams < 0.4 || num_labs < 3 do
       0
     else
-      mark = 0.2 * avg_labs + 0.3 * avg_homework + 0.2 * midterm + 0.3 * final
-
+      mark = calculate_grade(avg_labs, avg_homework, midterm, final)
       cond do
         mark > 0.895 -> 10
         mark > 0.845 -> 9
