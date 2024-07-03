@@ -69,6 +69,7 @@ class ExampleSeleniumTest {
     langSelector.click();
     WebElement frSelector = driver.findElement(By.cssSelector("option:nth-child(3)"));
     frSelector.click();
+    
     welcome = driver.findElement(By.cssSelector("p"));
     expected = "Bienvenu";
     actual = welcome.getText();
