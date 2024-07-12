@@ -2,14 +2,11 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+
 class CalCFrame extends JFrame implements ActionListener
 {
   
@@ -369,12 +366,8 @@ public void showAnswer( String s )
 //Method clickCheck determines if the user double clicked and returns a boolean
 //value.  If doubleclick is true, the program ignores the input
 //==============================================================================
-public boolean clickCheck( String s ) {
-  if ( s == "" )
-    doubleclick = true;
-  else 
-    doubleclick = false;
-    
+public boolean clickCheck(String s) {
+  doubleclick = s.equals("");
   return doubleclick;
 }
 
