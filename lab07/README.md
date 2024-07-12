@@ -22,9 +22,16 @@ public boolean clickCheck(String s) {
   
   return doubleclick;
 }
-
-**Updated code
+```
+**Updated Code:**
+```java
+Updated code
 public boolean clickCheck(String s) {
   doubleclick = s.equals("");
   return doubleclick;
 }
+```
+![Screenshot_1](lab07/Screenshot/Screenshot_1.png)
+![Screenshot_2](lab07/Screenshot/Screenshot_2.png)
+![Updated](lab07/Screenshot/Updated.png)
+
